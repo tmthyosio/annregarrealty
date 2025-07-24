@@ -1,0 +1,39 @@
+{% extends 'properties/base.html' %}
+{% block title %}{{ subdivision.name }} | Properties{% endblock %}
+{% load humanize %}
+
+{% block content %}
+<h2 class="mb-4">{{ subdivision.name }}</h2>
+
+{% if properties %}
+  <div class="row g-4">
+    {% for property in properties %}
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-sm h-100">
+        {% with property.images.first as preview %}
+            {% if preview %}
+            <a href="{% url 'property_detail' property.pk %}">
+                <img src="{{ preview.image.url }}" alt="{{ property.title }}"
+                    style="width: 100%; height: 180px; object-fit: cover; border-top-left-radius: 6px; border-top-right-radius: 6px;">
+            {% endif %}
+            {% endwith %}
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href="{% url 'property_detail' property.pk %}">
+              {{ property.title }}
+            </a>
+          </h5>
+          <p class="card-text">
+            📍 {{ property.address}}<br>
+            💰 ₱{{ property.price|floatformat:2|intcomma }}<br>
+            📐 {{ property.lot_area_sqm }} sqm
+          </p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{% else %}
+  <p>No properties found in this subdivision.</p>
+{% endif %}
+{% endblock %}

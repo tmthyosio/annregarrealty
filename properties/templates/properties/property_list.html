@@ -1,0 +1,44 @@
+{% extends 'properties/base.html' %}
+{% load static %}
+{% block title %}Available Properties{% endblock %}
+{% load humanize %}
+
+{% block content %}
+<h1 class="mb-4">Available Properties</h1>
+
+<form method="GET" class="mb-4 d-flex gap-2">
+    <input type="text" name="q" value="{{ query|default_if_none:'' }}" placeholder="Search" class="form-control">
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
+
+{% if properties %}
+    <div class="row">
+        {% for property in properties %}
+            <div class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                  {% with property.images.first as preview %}
+                    {% if preview %}
+                      <img src="{{ preview.image.url }}"
+                        alt="{{ property.title }}"
+                        style="width: 100%; height: 180px; object-fit: cover; border-top-left-radius: 6px; border-top-right-radius: 6px;">
+                    {% endif %}
+                  {% endwith %}
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="{% url 'property_detail' property.pk %}">{{ property.title }}</a>
+                        </h5>
+                        <p class="card-text mb-1">
+                            🏘️ <strong>{{ property.subdivision }}</strong><br>
+                            📍 {{ property.city_or_municipality }}, {{ property.province }}<br>
+                            💰 ₱{{ property.price|floatformat:2|intcomma }}<br>
+                            📐 {{ property.lot_area_sqm }} sqm
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No properties found.</p>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'properties/base.html' %}
+{% block title %}{{ property.title }}{% endblock %}
+{% load humanize %}
+{% load static %}
+
+{% block content %}
+<a href="{% url 'subdivision_properties' subdivision.id %}" class="btn btn-secondary mb-3">
+  ← Back to {{ subdivision.name }}
+</a>
+
+<div class="card shadow-sm p-4">
+  <div class="row g-4 align-items-start">
+    
+    <!-- Left Column: Image Section -->
+    <div class="col-md-6">
+      {% with property.images.first as main %}
+        {% if main %}
+          <a href="{{ main.image.url }}" class="glightbox" data-gallery="property-gallery">
+            <img src="{{ main.image.url }}"
+                alt="{{ property.title }}"
+                class="img-fluid rounded shadow-sm mb-3"
+                style="width: 100%; height: 340px; object-fit: cover;">
+          </a>
+        {% endif %}
+      {% endwith %}
+
+      {% if property.images.count > 1 %}
+      <div class="d-flex flex-wrap gap-2">
+        {% for image in property.images.all %}
+          {% if not forloop.first %}
+            <a href="{{ image.image.url }}" class="glightbox" data-gallery="property-gallery">
+              <img src="{{ image.image.url }}"
+                  alt="Preview"
+                  style="width: 100px; height: 70px; object-fit: cover; border-radius: 4px; cursor: pointer;"
+                  class="shadow-sm">
+            </a>
+          {% endif %}
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- Right Column: Property Info -->
+    <div class="col-md-6">
+      <h3 class="card-title">{{ property.title }}</h3>
+      <p class="card-text">
+        <strong>Subdivision:</strong> {{ property.subdivision }}<br>
+        <strong>Developer:</strong> {{ property.developer.name }}<br>
+        <strong>Status:</strong> {{ property.status|title }}<br>
+        <strong>Address:</strong> {{ property.address }}<br>
+        <strong>Lot Area:</strong> {{ property.lot_area_sqm }} sqm<br>
+        <strong>Floor Area:</strong> {{ property.floor_area_sqm|default:"—" }} sqm<br>
+        <strong>Price:</strong> ₱{{ property.price|floatformat:2|intcomma }} <br>
+        {% if property.google_maps_link %}
+        <a href="{{ property.google_maps_link }}" target="_blank" rel="noopener">
+            View on Google Maps
+        </a><br>
+        {% endif %}
+        <div class="mt-3">
+        <div class="d-flex gap-2 flex-wrap align-items-center">
+        
+        <!-- Messenger Button -->
+        <a href="https://m.me/annregarrealty1017" target="_blank" rel="noopener" class="btn btn-primary d-flex align-items-center gap-2">
+        <img src="{% static 'properties/Messenger_Icon_Secondary_White.svg' %}" alt="Messenger" style="height: 20px;">
+        Message us on Messenger
+        </a>
+
+        <!-- Facebook Page Button -->
+        <a href="https://www.facebook.com/annregarrealty1017" target="_blank" rel="noopener" class="btn btn-outline-primary d-flex align-items-center gap-2">
+        <img src="{% static 'properties/Facebook_Logo_Primary.png' %}" alt="Facebook" style="height: 20px;">
+        Visit our Facebook Page
+        </a>
+        </div>
+    </div>
+    </p>
+    </div>
+  </div>
+  <!-- Description Below -->
+  {% if property.description %}
+  <hr class="my-4">
+  <div>
+    <h5>Property Details</h5>
+    <p>{{ property.description|linebreaks }}</p>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

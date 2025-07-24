@@ -1,0 +1,42 @@
+{% extends 'properties/base.html' %}
+{% block title %}Annregar Realty | Home{% endblock %}
+{% load static %}
+{% block content %}
+
+<div class="text-center mb-5">
+  <img src="{% static 'properties/logo1.png' %}" alt="Annregar Realty" style="max-width: 250px;" class="mb-3">
+  <h1 class="fw-bold" style="color: var(--primary-maroon);">Welcome to Annregar Realty</h1>
+  <p class="lead" style="max-width: 600px; margin: auto;">
+    Helping you find the perfect home across our trusted subdivisions. Explore by developer or location using the menu above.
+  </p>
+</div>
+<div class="row justify-content-center text-center g-4 mb-5">
+  <div class="col-md-4">
+    <div class="card shadow-sm border-0 h-100">
+      <div class="card-body">
+        <h5 class="card-title">📌 Featured Subdivisions</h5>
+        <p class="card-text">Browse our most in-demand listings in top locations.</p>
+        <a href="{% url 'subdivision_properties' 1 %}" class="btn btn-outline-primary">Explore</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card shadow-sm border-0 h-100">
+      <div class="card-body">
+        <h5 class="card-title">💬 Talk to Us</h5>
+        <p class="card-text">Have questions? Chat with us on Messenger.</p>
+        <a href="https://m.me/AnnregarRealty" target="_blank" class="btn btn-primary">Message Us</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="text-center">
+  <h3 class="mb-3" style="color: var(--accent-green);">About Annregar Realty</h3>
+  <p style="max-width: 700px; margin: auto;">
+    We are a trusted partner in property acquisition, offering homes in premier subdivisions across the Philippines.
+    With a focus on clarity, integrity, and customer care, we guide you from inquiry to ownership.
+  </p>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'properties/base.html' %}
+{% block title %}Developers | Annregar Realty{% endblock %}
+{% load humanize %}
+
+{% block content %}
+<h1 class="mb-4">Registered Developers</h1>
+
+{% if developers %}
+<div class="row g-4">
+  {% for developer in developers %}
+  <div class="col-md-6 col-lg-4">
+    <div class="card shadow-sm h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ developer.name }}</h5>
+        <p class="card-text mb-1">
+          👤 {{ developer.contact_person|default:"N/A" }}<br>
+          📞 {{ developer.phone|default:"N/A" }}<br>
+          ✉️ {{ developer.email|default:"N/A" }}
+        </p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<p>No developers registered yet.</p>
+{% endif %}
+{% endblock %}
