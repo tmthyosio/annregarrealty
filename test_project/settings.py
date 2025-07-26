@@ -80,9 +80,9 @@ WSGI_APPLICATION = 'test_project.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'default': dj_database_url.config(default=os.environ.get('postgresql://annregar_db_user:zhreeLmkJnjLGGiZztJCFSXlbCTKn7un@dpg-d227k33e5dus739bhpbg-a/annregar_db'))
-    }
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3'
+    )
 }
 
 

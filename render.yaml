@@ -3,7 +3,9 @@ services:
     name: annregar-realty
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn test_project.wsgi:application
+    startCommand: |
+      python manage.py migrate &&
+      gunicorn test_project.wsgi:application
     staticPublishPath: staticfiles
     envVars:
     - key: DJANGO_SETTINGS_MODULE
