@@ -1,6 +1,11 @@
 from .models import Developer
+from django.db.utils import ProgrammingError, OperationalError
 
 def developer_nav(request):
+    try:
+        developers = Developer.objects.all()
+    except (ProgrammingError, OperationalError):
+        developers = []
     return {
-        'all_developers': Developer.objects.prefetch_related('subdivision_set').all()
+        'all_developers': developers
     }
