@@ -29,7 +29,7 @@ class Property(models.Model):
     description = models.TextField(blank=True)
     developer = models.ForeignKey(Developer, on_delete=models.SET_NULL, null=True, blank=True)
     subdivision = models.ForeignKey(Subdivision, on_delete=models.SET_NULL, null=True, blank=True)
-    price = models.DecimalField(max_digits=12, decimal_places=2)
+    price = models.TextField(max_length=255)
     address = models.CharField(max_length=255, null=True)
     google_maps_link = models.URLField(blank=True, null=True)
     lot_area_sqm = models.DecimalField(max_digits=10, decimal_places=2)

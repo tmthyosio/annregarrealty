@@ -50,7 +50,7 @@
         <strong>Address:</strong> {{ property.address }}<br>
         <strong>Lot Area:</strong> {{ property.lot_area_sqm }} sqm<br>
         <strong>Floor Area:</strong> {{ property.floor_area_sqm|default:"—" }} sqm<br>
-        <strong>Price:</strong> ₱{{ property.price|floatformat:2|intcomma }} <br>
+        <strong>Price:</strong> ₱{{ property.price }} <br>
         {% if property.google_maps_link %}
         <a href="{{ property.google_maps_link }}" target="_blank" rel="noopener">
             View on Google Maps
