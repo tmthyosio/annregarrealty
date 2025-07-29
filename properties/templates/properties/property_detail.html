@@ -60,21 +60,20 @@
         <div class="d-flex gap-2 flex-wrap align-items-center">
         
         <!-- Messenger Button -->
-            <a id="messenger-button" href="#" target="_blank" rel="noopener" class="btn btn-primary d-flex align-items-center gap-2">
+            <a id="messenger-button" href="https://www.facebook.com/messages/t/100928742825649" target="_blank" rel="noopener" class="btn btn-primary d-flex align-items-center gap-2">
             <img src="{% static 'properties/Messenger_Icon_Secondary_White.svg' %}" alt="Messenger" style="height: 20px;">
             Message us on Messenger
             </a>
-           <script>
-            document.addEventListener("DOMContentLoaded", function () {
-                const link = document.getElementById("messenger-link");
 
-                // Treat screens < 768px as mobile
-                const isDesktop = window.innerWidth >= 768;
+            <script>
+            const isMobile = /iPhone|Android|Mobile|iPad|iPod/i.test(navigator.userAgent);
+            const messengerLink = document.getElementById("messenger-button");
 
-                link.href = isDesktop
-                ? "https://www.facebook.com/messages/t/annregarrealty1017"
-                : "https://m.me/annregarrealty1017";
-            });
+            if (isMobile) {
+                messengerLink.href = "https://m.me/annregarrealty1017";
+            } else {
+                messengerLink.href = "https://www.facebook.com/messages/t/annregarrealty1017";
+            }
             </script>
         <!-- Facebook Page Button -->
         <a href="https://www.facebook.com/annregarrealty1017" target="_blank" rel="noopener" class="btn btn-outline-primary d-flex align-items-center gap-2">
