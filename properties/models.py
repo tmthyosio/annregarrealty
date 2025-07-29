@@ -29,9 +29,6 @@ class Property(models.Model):
     description = models.TextField(blank=True)
     developer = models.ForeignKey(Developer, on_delete=models.SET_NULL, null=True, blank=True)
     subdivision = models.ForeignKey(Subdivision, on_delete=models.SET_NULL, null=True, blank=True)
-    #region = models.CharField(max_length=100)#
-    #city_or_municipality = models.CharField(max_length=100)
-    #barangay = models.CharField(max_length=100, blank=True)#
     price = models.DecimalField(max_digits=12, decimal_places=2)
     address = models.CharField(max_length=255, null=True)
     google_maps_link = models.URLField(blank=True, null=True)
