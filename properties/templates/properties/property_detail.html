@@ -64,6 +64,15 @@
         <img src="{% static 'properties/Messenger_Icon_Secondary_White.svg' %}" alt="Messenger" style="height: 20px;">
         Message us on Messenger
         </a>
+        <script>
+            const isMobile = /iPhone|Android|Mobile|iPad|iPod/i.test(navigator.userAgent);
+            const messengerLink = document.getElementById("messenger-button");
+
+            if (!isMobile) {
+                // Redirect to Messenger thread on Facebook desktop
+                messengerLink.href = "https://www.facebook.com/messages/t/annregarrealty1017";
+            }
+            </script>
 
         <!-- Facebook Page Button -->
         <a href="https://www.facebook.com/annregarrealty1017" target="_blank" rel="noopener" class="btn btn-outline-primary d-flex align-items-center gap-2">
