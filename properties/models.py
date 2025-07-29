@@ -1,4 +1,5 @@
 from django.db import models
+from cloudinary_storage.storage import MediaCloudinaryStorage
 
 class Developer(models.Model):
     name = models.CharField(max_length=255)
@@ -43,7 +44,7 @@ class Property(models.Model):
 
 class PropertyImage(models.Model):
     property = models.ForeignKey(Property, on_delete=models.CASCADE, related_name='images')
-    image = models.ImageField(upload_to='property_images/')
+    image = models.ImageField(upload_to='property_images/', storage=MediaCloudinaryStorage())
 
     def __str__(self):
         return f"{self.property.title} Image"
