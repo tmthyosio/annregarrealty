@@ -3,12 +3,9 @@ services:
     name: annregar-realty
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: |
-      python manage.py migrate --noinput &&
-      gunicorn test_project.wsgi:application
-    staticPublishPath: staticfiles
+    startCommand: python manage.py migrate
     envVars:
-    - key: DJANGO_SETTINGS_MODULE
-      value: test_project.settings
-    - key: PYTHON_VERSION
-      value: 3.11.8
+      - key: DJANGO_SETTINGS_MODULE
+        value: test_project.settings
+      - key: PYTHON_VERSION
+        value: 3.11.8
