@@ -15,10 +15,10 @@
     {% with property.images.first as main %}
         {% if main %}
         <!-- Main image -->
-        <a href="{{ main.image.url|add:'?c_fit,w_1200,h_800,f_auto,q_auto' }}"
+        <a href="{{ main.image.url|add:'?c_limit, f_auto,q_auto' }}"
             class="glightbox"
             data-gallery="property-gallery">
-            <img src="{{ main.image.url|add:'?c_limit,w_600,h_auto,f_auto,q_auto' }}"
+            <img src="{{ main.image.url|add:'?c_limit,w_600,h_400,f_auto,q_auto' }}"
                 alt="{{ property.title }}"
                 class="img-fluid rounded shadow-sm">
         </a>
