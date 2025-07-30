@@ -14,9 +14,11 @@
     <div class="col-md-6">
     {% with property.images.first as main %}
         {% if main %}
-        <!-- Main image preview + Lightbox trigger -->
-        <a href="{{ main.image.url|add:'?c_fit,w_1200,h_800,f_auto,q_auto' }}" data-lightbox="property-gallery">
-            <img src="{{ main.image.url|add:'?c_fit,w_600,h_350,f_auto,q_auto' }}"
+        <!-- Main image -->
+        <a href="{{ main.image.url|add:'?c_fit,w_1200,h_800,f_auto,q_auto' }}"
+            class="glightbox"
+            data-gallery="property-gallery">
+            <img src="{{ main.image.url|add:'?c_fit,w_600,h_400,f_auto,q_auto' }}"
                 alt="{{ property.title }}"
                 class="img-fluid rounded shadow-sm">
         </a>
@@ -24,11 +26,13 @@
     {% endwith %}
 
     {% if property.images.count > 1 %}
-    <!-- Thumbnail previews that also open Lightbox -->
+    <!-- Additional thumbnails -->
     <div class="d-flex flex-wrap gap-2 mt-3">
         {% for image in property.images.all %}
         {% if not forloop.first %}
-            <a href="{{ image.image.url|add:'?c_fit,w_1200,h_800,f_auto,q_auto' }}" data-lightbox="property-gallery">
+            <a href="{{ image.image.url|add:'?c_fit,w_1200,h_800,f_auto,q_auto' }}"
+            class="glightbox"
+            data-gallery="property-gallery">
             <img src="{{ image.image.url|add:'?c_fit,w_100,h_70,f_auto,q_auto' }}"
                 alt="Preview"
                 style="width: 100px; height: 70px; object-fit: cover; border-radius: 4px; cursor: pointer;"
