@@ -10,35 +10,35 @@
 
 <div class="card shadow-sm p-4">
   <div class="row g-4 align-items-start">
-    
     <!-- Left Column: Image Section -->
     <div class="col-md-6">
-      {% with property.images.first as main %}
+    {% with property.images.first as main %}
         {% if main %}
-          <a href="{{ main.image.url|add:'?c_fit,w_800,h_400,f_auto,q_auto' }}" data-lightbox="property-gallery">
-            <img src="{{ main.image.url|add:'?c_fit,w_800,h_400,f_auto,q_auto' }}" 
-                alt="{{ property.title }}" 
+        <!-- Main image preview + Lightbox trigger -->
+        <a href="{{ main.image.url|add:'?c_fit,w_1200,h_800,f_auto,q_auto' }}" data-lightbox="property-gallery">
+            <img src="{{ main.image.url|add:'?c_fit,w_600,h_350,f_auto,q_auto' }}"
+                alt="{{ property.title }}"
                 class="img-fluid rounded shadow-sm">
-          </a>
+        </a>
         {% endif %}
-      {% endwith %}
+    {% endwith %}
 
-      {% if property.images.count > 1 %}
-      <div class="d-flex flex-wrap gap-2">
+    {% if property.images.count > 1 %}
+    <!-- Thumbnail previews that also open Lightbox -->
+    <div class="d-flex flex-wrap gap-2 mt-3">
         {% for image in property.images.all %}
-          {% if not forloop.first %}
-            <a href="{{ image.image.url }}" class="glightbox" data-gallery="property-gallery">
-              <img src="{{ image.image.url }}"
-                  alt="Preview"
-                  style="width: 100px; height: 70px; object-fit: cover; border-radius: 4px; cursor: pointer;"
-                  class="shadow-sm">
+        {% if not forloop.first %}
+            <a href="{{ image.image.url|add:'?c_fit,w_1200,h_800,f_auto,q_auto' }}" data-lightbox="property-gallery">
+            <img src="{{ image.image.url|add:'?c_fit,w_100,h_70,f_auto,q_auto' }}"
+                alt="Preview"
+                style="width: 100px; height: 70px; object-fit: cover; border-radius: 4px; cursor: pointer;"
+                class="shadow-sm">
             </a>
-          {% endif %}
+        {% endif %}
         {% endfor %}
-      </div>
-      {% endif %}
     </div>
-
+    {% endif %}
+    </div>
     <!-- Right Column: Property Info -->
     <div class="col-md-6">
       <h3 class="card-title">{{ property.title }}</h3>
