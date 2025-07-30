@@ -31,7 +31,7 @@
     <div class="d-flex flex-wrap gap-2 mt-3">
         {% for image in property.images.all %}
         {% if not forloop.first %}
-            <a href="{{ image.image.url|add:'?c_fit,w_1200,h_800,f_auto,q_auto' }}"
+            <a href="{{ image.image.url|add:'?c_fit,w_800,h_400,f_auto,q_auto' }}"
             class="glightbox"
             data-gallery="property-gallery"
             data-type="image">
