@@ -21,7 +21,8 @@
             data-type="image">
             <img src="{{ main.image.url|add:'?c_fit,w_400,h_200,f_auto,q_auto' }}"
                 alt="{{ property.title }}"
-                class="img-fluid rounded shadow-sm">
+                class="img-fluid rounded shadow-sm"
+                style="max-width: 100%; height: auto; width: 450px;">
         </a>
         {% endif %}
     {% endwith %}
