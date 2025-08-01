@@ -35,6 +35,7 @@
             <a href="{{ image.image.url|add:'?c_limit,f_auto,q_auto' }}"
                 class="glightbox position-relative"
                 data-gallery="property-gallery"
+                data-type="image"
                 {% if forloop.counter0 == 4 and property.images.count > 6 %}
                 style="position: relative;"
                 {% endif %}>
