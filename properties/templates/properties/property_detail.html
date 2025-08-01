@@ -28,19 +28,29 @@
     {% endwith %}
 
     {% if property.images.count > 1 %}
-    <!-- Additional thumbnails -->
-    <div class="d-flex flex-wrap gap-2 mt-3">
+    <div class="d-flex flex-wrap gap-2 mt-3 position-relative">
         {% for image in property.images.all %}
         {% if not forloop.first %}
-            <a href="{{ image.image.url|add:'?c_fit,w_800,h_400,f_auto,q_auto' }}"
-            class="glightbox"
-            data-gallery="property-gallery"
-            data-type="image">
-            <img src="{{ image.image.url|add:'?c_fit,w_100,h_70,f_auto,q_auto' }}"
-                alt="Preview"
-                style="width: 100px; height: 70px; object-fit: cover; border-radius: 4px; cursor: pointer;"
-                class="shadow-sm">
+            {% if forloop.counter0 < 5 %}
+            <a href="{{ image.image.url|add:'?c_limit,f_auto,q_auto' }}"
+                class="glightbox position-relative"
+                data-gallery="property-gallery"
+                {% if forloop.counter0 == 4 and property.images.count > 6 %}
+                style="position: relative;"
+                {% endif %}>
+                <img src="{{ image.image.url|add:'?c_fit,w_100,h_70,f_auto,q_auto' }}"
+                    alt="Preview"
+                    class="shadow-sm"
+                    style="width: 100px; height: 70px; object-fit: cover; border-radius: 4px; cursor: pointer;
+                    {% if forloop.counter0 == 4 and property.images.count > 6 %}
+                    filter: brightness(50%);
+                    {% endif %}">
+                {% if forloop.counter0 == 4 and property.images.count > 6 %}
+                <span class="position-absolute top-50 start-50 translate-middle text-white fw-bold"
+                        style="font-size: 18px;">+{{ property.images.count|add:"-6" }}</span>
+                {% endif %}
             </a>
+            {% endif %}
         {% endif %}
         {% endfor %}
     </div>
