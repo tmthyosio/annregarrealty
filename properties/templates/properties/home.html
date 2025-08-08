@@ -38,15 +38,47 @@
   </p>
 </div>
 <!-- Reserved space for future slideshow -->
+<!-- Image Slideshow (Bootstrap Carousel) -->
 <div class="container py-5">
   <div class="row">
-    <div class="col">
-      <div class="p-4 border rounded text-center text-muted bg-light">
-        <em>📷 Slideshow placeholder – images coming soon...</em>
+    <div class="col-md-10 offset-md-1">
+      <div id="annregarSlideshow" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static 'properties/caro1.jpg' %}" class="d-block w-100" alt="Slide 1">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'properties/caro2.jpg' %}" class="d-block w-100" alt="Slide 2">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'properties/caro3.jpg' %}" class="d-block w-100" alt="Slide 3">
+          </div>
+          <div class="carousel-item active">
+            <img src="{% static 'properties/caro4.jpg' %}" class="d-block w-100" alt="Slide 1">
+          </div>
+          <div class="carousel-item active">
+            <img src="{% static 'properties/caro5.jpg' %}" class="d-block w-100" alt="Slide 1">
+          </div>
+          <div class="carousel-item active">
+            <img src="{% static 'properties/caro6.jpg' %}" class="d-block w-100" alt="Slide 1">
+          </div>
+          <div class="carousel-item active">
+            <img src="{% static 'properties/caro7.jpg' %}" class="d-block w-100" alt="Slide 1">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#annregarSlideshow" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#annregarSlideshow" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
     </div>
   </div>
 </div>
+
 
 <!-- About Us & Company Values -->
 <div class="container py-5">
