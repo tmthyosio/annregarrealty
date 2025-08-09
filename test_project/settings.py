@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'test_project.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3'
+        default='postgresql://postgres.logyucekkefpbyofphes:Annregarrealty1017@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres'
     )
 }
 
