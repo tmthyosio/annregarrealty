@@ -3,20 +3,123 @@
 {% load static %}
 {% block content %}
 
-
-
-<!-- Spacer to enable scrolling -->
-<div style="height: 1000px;"></div>
-
-<!-- AOS Test Section -->
-<div data-aos="fade-up" style="background: #d1f1ff; padding: 2rem; text-align: center;">
-  <h2>This should animate with AOS</h2>
-  <p>If you’re seeing this fade in as you scroll, AOS is working!</p>
+<!-- Hero Section -->
+<div class="text-center mb-5" data-aos="fade-up">
+  <img src="{% static 'properties/logo1.png' %}" alt="Annregar Realty" style="max-width: 250px;" class="mb-3">
+  <h1 class="fw-bold" style="color: var(--primary-maroon);">Welcome to Annregar Realty</h1>
+  <p class="lead" style="max-width: 600px; margin: auto;">
+    Helping you find the perfect home across our trusted subdivisions. Explore by developer or location using the menu above.
+  </p>
 </div>
 
-<!-- More Spacer -->
-<div style="height: 1000px;"></div>
+<!-- Info Cards -->
+<div class="row justify-content-center text-center g-4 mb-5">
+  <div class="col-md-4" data-aos="fade-right">
+    <div class="card shadow-sm border-0 h-100">
+      <div class="card-body">
+        <h5 class="card-title">📌 Featured Subdivisions</h5>
+        <p class="card-text">Browse our most in-demand listings in top locations.</p>
+        <a href="{% url 'subdivision_properties' 1 %}" class="btn btn-outline-primary">Explore</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4" data-aos="fade-left">
+    <div class="card shadow-sm border-0 h-100">
+      <div class="card-body">
+        <h5 class="card-title">💬 Talk to Us</h5>
+        <p class="card-text">Have questions? Chat with us on Messenger.</p>
+        <a href="https://m.me/annregarrealty1017" target="_blank" class="btn btn-primary">Message Us</a>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- About Header -->
+<div class="text-center" data-aos="fade-up">
+  <h3 class="mb-3" style="color: var(--accent-green);">About Annregar Realty</h3>
+  <p style="max-width: 700px; margin: auto;">
+    We are a trusted partner in property acquisition, offering homes in premier subdivisions across the Philippines.
+    With a focus on clarity, integrity, and customer care, we guide you from inquiry to ownership.
+  </p>
+</div>
 
+<!-- Carousel -->
+<div class="container py-5" data-aos="zoom-in">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <div id="annregarSlideshow" class="carousel slide shadow rounded overflow-hidden" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          {% for i in "245910111213"|make_list %}
+            <div class="carousel-item {% if forloop.first %}active{% endif %}">
+              <img src="{% static 'properties/caro'|add:i|add:'.jpg' %}"
+                   class="d-block w-100"
+                   style="height: 550px; object-fit: cover; object-position: center;"
+                   alt="Slide {{ i }}">
+            </div>
+          {% endfor %}
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#annregarSlideshow" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#annregarSlideshow" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- About and Values -->
+<div class="container py-5">
+  <div class="row mb-5 align-items-center">
+    <div class="col-md-6" data-aos="fade-right">
+      <h3 class="mb-3">Welcome to Annregar Realty</h3>
+      <p>
+        Annregar Realty is your trusted partner in real estate — helping clients across the Philippines find homes and properties that match their lifestyle, goals, and values. We work closely with top developers to bring you curated listings that meet high standards in quality, accessibility, and investment potential.
+      </p>
+      <p>
+        With a team driven by integrity, professionalism, and purpose, we are committed to delivering service beyond expectations, from first-time buyers to seasoned investors.
+      </p>
+    </div>
+    <div class="col-md-6 text-center" data-aos="fade-left">
+      <img src="{% static 'properties/ceo.jpg' %}" class="img-fluid rounded-circle shadow" alt="CEO of Annregar Realty" style="max-width: 250px;">
+      <p class="mt-3 mb-0"><strong>[CEO Name]</strong></p>
+      <small class="text-muted">Chief Executive Officer</small>
+    </div>
+  </div>
+
+  <div class="row text-center mb-4" data-aos="fade-up">
+    <h2 class="fw-bold">Our Mission, Vision & Core Values</h2>
+  </div>
+  <div class="row text-start">
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+      <h5 class="text-success"><strong>■ VISION</strong></h5>
+      <p>
+        To adapt and evolve to continue offering beyond-expectation service and results through initiative, respect, transparency, integrity, and passion to our Sellers, Business partners, and Buyers.
+      </p>
+    </div>
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+      <h5 class="text-success"><strong>■ OUR MISSION</strong></h5>
+      <p>
+        To deliver excellence in every aspect of real estate transactions, in order to achieve excellence, integrity, expertise, and hard work for our clients.<br>
+        We aim to deliver the best and quality service to our clients.
+      </p>
+    </div>
+    <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+      <h5 class="text-success"><strong>■ VALUES</strong></h5>
+      <p><strong>Integrity:</strong><br>
+        We aim to deliver the best to our clients, our community, and our profession. We promise a relationship characterized by honesty, transparency, and sincerity in all of our transactions.
+      </p>
+      <p><strong>Professionalism:</strong><br>
+        We are responsive, dedicated, and committed to the highest standards consistent with the goals of the projects. It is our duty to perform to the highest standard of professionalism, knowledge, and experience in all areas of our service.
+      </p>
+      <p><strong>Passion:</strong><br>
+        We have a fully committed and customer-oriented team with a passion for maintaining and improving our reputation.
+      </p>
+    </div>
+  </div>
+</div>
 
 {% endblock %}
